@@ -65,3 +65,5 @@ db.sqlite3-journal
 .cursorindexingignore
 
 .env
+
+venv
