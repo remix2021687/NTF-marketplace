@@ -33,13 +33,14 @@ class NFTEventTags(models.Model):
     def __str__(self):
         return f'NFT Event Tag: {self.name}'
 
+
 class NFTEvent(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField('NFT Event Title', max_length=150, null=False, blank=False)
+    name = models.CharField('NFT Event Title', max_length=150, null=False, blank=False)
     description = models.TextField('NFT Event Description', max_length=5000, null=False, blank=False)
-    timestamp = models.DateTimeField('NFT Event Timestamp', null=False, blank=False)
+    timeset = models.DateTimeField('NFT Event Timestamp', null=False, blank=False)
     tags = models.ManyToManyField(NFTEventTags)
-    # detail - create hyperlink
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'NFT Event Title: {self.title} | Time: {self.timestamp}'
+        return f'NFT Event Title: {self.name} | Time: {self.timeset}'
